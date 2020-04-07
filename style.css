@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'Lato';
+    src: local('Lato Bold'), local('Lato-Bold'), url('assets/fonts/latobold.woff2') format('woff2'), url('assets/fonts/latobold.woff') format('woff'), url('assets/fonts/latobold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+*{
+    border: 0px;
+    padding: 0px;
+}
+
+.keyboard{
+    display: inline-block;
+    width: 750px;
+    font-family: 'Lato', Arial, sans-serif;
+    font-weight: 700;
+}
+
+.row{
+    display: flex;
+}
+
+.rus, .eng{
+    width: inherit;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rus span, .eng span{
+    margin: 0px;
+}
+
+.key {
+    display: inline-block;
+    position: relative;
+    margin: 4px;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: black;
+}
+.key:hover{
+    border-radius: 20%;
+}
+
+
+ .hidden{
+     display: none;
+ }
+
+ .norm, .pressShift, .pressCaps, .shiftCaps{
+     color: gray;
+     font-size: 20px;
+     font-weight: 700;
+ }
+
+ .Backspace{
+     width: 120px;
+ }
+
+ .Tab {
+     width: 72px;
+ }
+ .CapsLock, .ShiftLeft{
+     width: 100px;
+ }
+ .Enter, .ShiftRight{
+     width: 108px;
+ }
+
+ .Space{
+     width: 359px;
+ }
+ .keyboard__textarea{
+     border: 1px solid grey;
+     display: inline-block;
+     width: 750px;
+     height: 300px;
+ }
+
+ .keyboard__textarea_attr{
+     width: inherit;
+     height: inherit;
+     resize: none;
+     font-size: 25px;
+     font-weight: 700;
+ }
+
+ .active{
+    transition: background-color 0.2s , border-radius 0.2s ;
+    background-color: slategrey;
+    border-radius: 15px;
+    color: black;
+ }
+
+ .inactive{
+   transition: background-color 0.2s, border-radius 0.2s;
+   border-radius: 5px;
+   background-color: black;
+   color: gray;
+}
+
+
+
