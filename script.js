@@ -421,6 +421,7 @@ document.querySelector('body').innerHTML = `<div class="wrapper">
       </div> <!--  конец row -->
       <div class="row row-3">
           <div class="key CapsLock functional inactive">
+          <div class="capsLockLed hidden"></div>
             <div class="rus hidden">
                 <span class="norm">CapsLock</span>
                 <span class="pressShift hidden">CapsLock</span>
@@ -605,6 +606,7 @@ document.querySelector('body').innerHTML = `<div class="wrapper">
       </div> <!--  конец row -->
       <div class="row row-4">
           <div class="key ShiftLeft functional inactive">
+              <div class="shiftLed hidden"></div>
             <div class="rus hidden">
                 <span class="norm">Shift</span>
                 <span class="pressShift hidden">Shift</span>
@@ -773,6 +775,7 @@ document.querySelector('body').innerHTML = `<div class="wrapper">
           </div>
          </div>
          <div class="key ShiftRight functional inactive">
+         <div class="shiftLed hidden"></div>
           <div class="rus hidden">
               <span class="norm">Shift</span>
               <span class="pressShift hidden">Shift</span>
@@ -924,7 +927,6 @@ document.querySelector('body').innerHTML = `<div class="wrapper">
 let curPos = 0;
 const defaultLang = 0;
 let lang = localStorage.getItem('lang') || defaultLang;
-console.log(lang);
 lang--;
 changeLang();
 document.querySelectorAll('.eng').forEach(el => {
@@ -961,7 +963,8 @@ document.querySelectorAll('.keyboard')[0].addEventListener('mousedown', (event) 
     divKey.classList.add('active');
     if(divKey.classList.contains('keyboard')){divKey.classList.remove('active')}
     if(divKey.classList.contains('lang')){changeLang()}
-    inputToTextarea(divKey, val);
+    if(divKey.classList.contains('key')){inputToTextarea(divKey, val);}
+    
 })
 
 document.querySelectorAll('.keyboard')[0].addEventListener('mouseup', (event) => {
@@ -992,7 +995,6 @@ document.onkeydown = function (event) {
         if (el.classList.contains('hidden') == false){
         divKey = el.parentNode.parentNode;
         val = el.innerHTML;
-        console.log(val);
        
         }})
         if(divKey.classList.contains('lang')){changeLang()}
@@ -1020,7 +1022,6 @@ function inputToTextarea(div, val){
         if(val == 'Alt' || val == 'Ctrl'){val = ''}
                     //--------------обработчик delete и backspace
                     if (val == 'Backspace' || val == 'Del'){
-                        console.log(val);
                         let str1 = document.getElementById('textarea').value.substring(0, document.getElementById('textarea').selectionStart);
                         let str2 = document.getElementById('textarea').value.substring(document.getElementById('textarea').selectionStart);                        
                         if(document.getElementById('textarea').selectionStart == document.getElementById('textarea').selectionEnd){
@@ -1044,6 +1045,8 @@ function inputToTextarea(div, val){
     if(val == 'Shift'){
         shiftCount++;
         if(shiftCount%2 == 1){
+          document.querySelectorAll('.shiftLed').forEach(el => {
+            el.classList.remove('hidden')});
             document.querySelectorAll('span').forEach(el => {
                 el.classList.add('hidden')
                 if(el.classList.contains('pressShift')){
@@ -1051,6 +1054,8 @@ function inputToTextarea(div, val){
                 )
         }
         else{
+          document.querySelectorAll('.shiftLed').forEach(el => {
+            el.classList.add('hidden')});
             document.querySelectorAll('span').forEach(el => {
                 el.classList.add('hidden')
                 if(el.classList.contains('norm')){
@@ -1073,6 +1078,7 @@ function inputToTextarea(div, val){
     if(val == 'CapsLock'){
         capsCount++;
         if(capsCount%2 == 1){
+          document.querySelector('.capsLockLed').classList.remove('hidden');
             document.querySelectorAll('span').forEach(el => {
                 el.classList.add('hidden')
                 if(el.classList.contains('pressCaps')){
@@ -1080,6 +1086,7 @@ function inputToTextarea(div, val){
                 )
         }
         else{
+          document.querySelector('.capsLockLed').classList.add('hidden');
             document.querySelectorAll('span').forEach(el => {
                 el.classList.add('hidden')
                 if(el.classList.contains('norm')){
@@ -1126,7 +1133,6 @@ function inputToTextarea(div, val){
 function changeLang(){
     lang++;
     localStorage.setItem('lang', lang);
-    console.log(localStorage.getItem('lang'));    
     if(lang%2 == 0){
         document.querySelectorAll('.rus').forEach(el => el.classList.add('hidden'))
         document.querySelectorAll('.rus > span').forEach(el => el.classList.add('hidden'))
