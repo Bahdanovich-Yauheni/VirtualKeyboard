@@ -2,8 +2,9 @@
 let val = '';
 let shiftCount = 0;
 let capsCount = 0;
-const textarea = document.getElementById('textarea');
-document.querySelector('body').innerHTML = `
+// const textarea = document.getElementById('textarea');
+document.querySelector('body').innerHTML = `<div class="wrapper">
+
 <div class="keyboard__textarea">
   <textarea class="keyboard__textarea_attr" id = "textarea"></textarea> 
 </div><br>
@@ -918,6 +919,7 @@ document.querySelector('body').innerHTML = `
   <br>
 <p>Клавиатура сделана в ОС Windows</p>
 <p>Для переключения языка используется правый Ctrl</p>
+</div>
 `;
 let curPos = 0;
 const defaultLang = 0;
@@ -957,8 +959,8 @@ document.querySelectorAll('.keyboard')[0].addEventListener('mousedown', (event) 
     // document.querySelectorAll('.key').forEach(el => el.classList.remove('active'))
     divKey.classList.remove('inactive');
     divKey.classList.add('active');
-    if(divKey.classList.contains('keyboard')){divKey.classList.remove('active')};
-    if(divKey.classList.contains('lang')){changeLang()};
+    if(divKey.classList.contains('keyboard')){divKey.classList.remove('active')}
+    if(divKey.classList.contains('lang')){changeLang()}
     inputToTextarea(divKey, val);
 })
 
@@ -974,7 +976,7 @@ document.querySelectorAll('.keyboard')[0].addEventListener('mouseup', (event) =>
         divKey = event.target.parentNode.parentNode;}
     divKey.classList.remove('active');
     divKey.classList.add('inactive');
-    if(divKey.classList.contains('keyboard')){divKey.classList.remove('inactive')};
+    if(divKey.classList.contains('keyboard')){divKey.classList.remove('inactive')}
 }
 )
 
@@ -1006,21 +1008,21 @@ document.onkeyup = function (event) {
 function inputToTextarea(div, val){
     let text = document.querySelector('.keyboard__textarea_attr').value;
     if(div.classList.contains('functional') == false){
-        if(val == 'Tab'){val = '    '};
-        if(val == '&gt;'){val = '>'};
-        if(val == '&lt;'){val = '<'};
-        if(val == 'Enter'){val = '\n'};
+        if(val == 'Tab'){val = '    '}
+        if(val == '&gt;'){val = '>'}
+        if(val == '&lt;'){val = '<'}
+        if(val == 'Enter'){val = '\n'}
         
 
         
     }
     else{
-        if(val == 'Alt' || val == 'Ctrl'){val = ''};
+        if(val == 'Alt' || val == 'Ctrl'){val = ''}
                     //--------------обработчик delete и backspace
                     if (val == 'Backspace' || val == 'Del'){
                         console.log(val);
                         let str1 = document.getElementById('textarea').value.substring(0, document.getElementById('textarea').selectionStart);
-                        let str2 = document.getElementById('textarea').value.substring(document.getElementById('textarea').selectionStart);;                        
+                        let str2 = document.getElementById('textarea').value.substring(document.getElementById('textarea').selectionStart);                        
                         if(document.getElementById('textarea').selectionStart == document.getElementById('textarea').selectionEnd){
                             if (val == 'Backspace'){                              
                                 str1 = str1.substring(0, str1.length-1);

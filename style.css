@@ -10,6 +10,11 @@
     padding: 0px;
 }
 
+.wrapper {
+    margin: 0 auto;
+    width: fit-content;
+}
+
 .keyboard{
     display: inline-block;
     width: 750px;
@@ -19,6 +24,8 @@
 
 .row{
     display: flex;
+    justify-content: space-around;
+    height: 45px;
 }
 
 .rus, .eng{
@@ -36,7 +43,7 @@
 .key {
     display: inline-block;
     position: relative;
-    margin: 4px;
+    /* margin: 4px; */
     width: 40px;
     height: 40px;
     border-radius: 5px;
@@ -103,5 +110,12 @@
    color: gray;
 }
 
-
-
+.capsLockLed, .shiftLed{
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: white;
+    top: 3px;
+    left: 87px;
+}
