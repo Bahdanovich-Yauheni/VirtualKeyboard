@@ -1,0 +1,17 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "Task Link: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/codejam-virtual-keyboard.md",
+  "main": "script.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yauheni Bahdanovich",
+  "license": "ISC"
+}
